@@ -4,8 +4,7 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        './vendor/laravenpm install -D tailwindcss postcss autoprefixer\n' +
-        'npx tailwindcss init -pl/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
@@ -19,7 +18,5 @@ export default {
         },
     },
 
-    plugins: [
-        forms,
-    ],
+    plugins: [forms],
 };
