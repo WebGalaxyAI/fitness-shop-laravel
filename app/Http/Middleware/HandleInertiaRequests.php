@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -33,7 +34,20 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                'canAccessAdminPanel' => $request->user()?->canAccessAdminPanel(),
             ],
+            'flash' => [
+                'message' => $request->session()->get('message'),
+                'errors' => $request->session()->get('errors'),
+            ],
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'locale' => function () {
+                return app()->getLocale();
+            },
+            'language' => app('translator')
+                ->getLoader()
+                ->load(app()->getLocale(), '*', '*'),
         ];
     }
 }

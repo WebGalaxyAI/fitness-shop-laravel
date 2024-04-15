@@ -8,7 +8,7 @@ const props = defineProps({
     },
     width: {
         type: String,
-        default: '48',
+        default: '20',
     },
     contentClasses: {
         type: String,
@@ -27,20 +27,20 @@ onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
 const widthClass = computed(() => {
     return {
+        20: 'w-20',
         48: 'w-48',
     }[props.width.toString()];
 });
 
 const alignmentClasses = computed(() => {
     if (props.align === 'left') {
-        return 'ltr:origin-top-left rtl:origin-top-right start-0';
+        return 'origin-top-left left-0';
     } else if (props.align === 'right') {
-        return 'ltr:origin-top-right rtl:origin-top-left end-0';
+        return 'origin-top-right right-0';
     } else {
         return 'origin-top';
     }
 });
-
 const open = ref(false);
 </script>
 
@@ -68,10 +68,15 @@ const open = ref(false);
                 style="display: none"
                 @click="open = false"
             >
-                <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
+                <div class="rounded-md ring-1 ring-black ring-opacity-5 main-bg-red" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>
         </Transition>
     </div>
 </template>
+
+<style scoped lang="scss">
+@import "./resources/scss/_variables.scss";
+
+</style>

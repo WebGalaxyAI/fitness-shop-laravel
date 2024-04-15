@@ -1,6 +1,6 @@
 <script setup>
-import { computed } from 'vue';
-import { Link } from '@inertiajs/vue3';
+import {computed} from 'vue';
+import {Link} from '@inertiajs/vue3';
 
 const props = defineProps({
     href: {
@@ -14,13 +14,42 @@ const props = defineProps({
 
 const classes = computed(() =>
     props.active
-        ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'
-        : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out'
+        ? 'nav-link_active flex items-center justify-center'
+        : 'nav-link flex items-center justify-center'
 );
 </script>
 
 <template>
-    <Link :href="href" :class="classes">
-        <slot />
+    <Link :href="href"
+        :class="classes">
+        <slot/>
     </Link>
 </template>
+
+<style scoped lang="scss">
+.nav-link_active {
+    display: flex;
+    padding: 0.4em 0.8em;
+    align-items: flex-start;
+    color: white;
+    font-size: 14px;
+
+    border-radius: 6px;
+    background: #384255;
+}
+
+.nav-link {
+    display: flex;
+    padding: 0.4em 0.8em;
+    align-items: flex-start;
+    color: #909CB5;
+    font-size: 14px;
+
+    &:hover {
+        color: white;
+
+        border-radius: 6px;
+        background: rgba(30, 144, 255, 0.6);
+    }
+}
+</style>

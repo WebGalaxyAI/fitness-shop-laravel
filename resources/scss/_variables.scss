@@ -1,0 +1,15 @@
+$main-dark: #1A1A25;
+$text-gray: #858FA4;
+$bg-red: #F53B49;
+$bg-red-hover: #E32A38;
+
+.main-bg-red {
+    background: $bg-red;
+    &-hover {
+        background: $bg-red-hover;
+    }
+}
+
+.bg-dark-site {
+    background: $main-dark;
+}
