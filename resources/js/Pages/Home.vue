@@ -1,9 +1,11 @@
 <script setup>
 import {Head} from '@inertiajs/vue3'
 import MainLayout from "@/Layouts/MainLayout.vue";
+import MainSlider from "@/Components/MainSlider.vue";
 
 const props = defineProps({
         title: String,
+        sliders: Array,
     }
 )
 
@@ -12,7 +14,7 @@ const props = defineProps({
 <template>
     <Head :title="$page.props.title"/>
     <MainLayout>
-        Тут буде контент головної сторінки
+        <MainSlider :sliders="sliders"/>
     </MainLayout>
 </template>
 
