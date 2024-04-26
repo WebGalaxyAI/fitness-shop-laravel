@@ -7,6 +7,7 @@ import {ref} from "vue";
 import NavLink from "@/Components/NavLink.vue";
 import Link from "@/Components/Link.vue";
 import {usePage} from "@inertiajs/vue3";
+import LanguageSelector from "@/Components/LanguageSelector.vue";
 
 const page = usePage()
 const showingNavigationDropdown = ref(false);
@@ -48,6 +49,7 @@ function logout() {
                     </div>
 
                     <div class="hidden md:flex md:items-center md:ml-6 md:gap-6">
+                        <LanguageSelector/>
                         <!-- Settings Dropdown -->
                         <div v-if="$page.props.auth.user" class="ml-3 relative">
                             <Dropdown align="right" width="48">

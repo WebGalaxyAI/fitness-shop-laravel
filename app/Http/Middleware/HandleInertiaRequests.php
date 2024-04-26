@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Middleware;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -48,6 +49,18 @@ class HandleInertiaRequests extends Middleware
             'language' => app('translator')
                 ->getLoader()
                 ->load(app()->getLocale(), '*', '*'),
+            'languageSelector' => $this->generateSwitchLinks(),
         ];
+    }
+
+    private function generateSwitchLinks(): array
+    {
+        $links = [];
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
+            $links[$localeCode]['title'] = strtoupper($localeCode);
+            $links[$localeCode]['href'] = LaravelLocalization::getLocalizedURL($localeCode);
+            $links[$localeCode]['hreflang'] = $localeCode;
+        }
+        return $links;
     }
 }

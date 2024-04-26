@@ -4,9 +4,15 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::controller(IndexController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localizationRedirect']
+], function () {
+    Route::controller(IndexController::class)->group(function () {
+        Route::get('/', 'index')->name('home');
+    });
 });
 
 Route::get('/dashboard', function () {
