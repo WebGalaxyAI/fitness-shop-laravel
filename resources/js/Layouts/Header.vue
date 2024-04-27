@@ -8,6 +8,7 @@ import NavLink from "@/Components/NavLink.vue";
 import Link from "@/Components/Link.vue";
 import {usePage} from "@inertiajs/vue3";
 import LanguageSelector from "@/Components/LanguageSelector.vue";
+import CatalogMenuModal from "@/Components/Catalog/CatalogMenuModal.vue";
 
 const page = usePage()
 const showingNavigationDropdown = ref(false);
@@ -187,6 +188,7 @@ function logout() {
         <div class="bg-dark-site shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
                 <div class="flex items-center justify-center">
+                    <CatalogMenuModal/>
                 </div>
                 <div class="hidden sm:grid sm:grid-cols-3 md:grid-cols-4 sm:gap-2 lg:flex lg:items-center lg:gap-6">
                     <NavLink href="#"><span class="text-white">{{ __('Brands') }}</span></NavLink>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\CategoryResource;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Middleware;
@@ -31,6 +33,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $catRepository = app(CategoryRepository::class);
         return [
             ...parent::share($request),
             'auth' => [
@@ -46,6 +49,7 @@ class HandleInertiaRequests extends Middleware
             'locale' => function () {
                 return app()->getLocale();
             },
+            'catalogRootCats' => CategoryResource::collection($catRepository->catalogRootCats()),
             'language' => app('translator')
                 ->getLoader()
                 ->load(app()->getLocale(), '*', '*'),

@@ -40,4 +40,13 @@ class CategoryRepository
 
         return $homeGymCat->children;
     }
+
+    public function catalogRootCats(): Collection
+    {
+        return Category::query()
+            ->root()
+            ->with('children')
+            ->orderBy('order')
+            ->get();
+    }
 }
