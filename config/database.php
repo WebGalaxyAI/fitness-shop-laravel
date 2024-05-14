@@ -167,4 +167,8 @@ return [
 
     ],
 
+    'elastic' => [
+        'hosts' => explode(',', env('ELASTICSEARCH_HOSTS')),
+    ],
+
 ];

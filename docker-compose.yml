@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    search:
+        container_name: ${APP_NAME}_search
+        image: elasticsearch:7.17.15
+        ports:
+            - 6200:9200
+        environment:
+            - discovery.type=single-node

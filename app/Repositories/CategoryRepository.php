@@ -49,4 +49,18 @@ class CategoryRepository
             ->orderBy('order')
             ->get();
     }
+
+    public function findBySlug(string $slug): ?Category
+    {
+        return Category::findBySlug($slug);
+    }
+
+    public function getChildrenOrSiblingsAndSelf(Category $category): Collection
+    {
+        $categorySiblings = $category->children;
+        if ($categorySiblings->isEmpty()) {
+            $categorySiblings = $category->siblingsAndSelf()->get();
+        }
+        return $categorySiblings;
+    }
 }

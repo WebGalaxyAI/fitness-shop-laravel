@@ -17,6 +17,7 @@ Route::group([
 
         Route::controller(CatalogController::class)->group(function () {
             Route::get('catalog/{category}', 'index')->name('catalog');
+            Route::get('catalog-load-more/{category}', 'loadMore')->name('catalog-load-more');
         });
 
         Route::get('product/{product}', ProductController::class)->name('product');

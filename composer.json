@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "efureev/laravel-trees": "^4.0",
+        "elasticsearch/elasticsearch": "^8.13",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
         "inertiajs/inertia-laravel": "^1.0",
