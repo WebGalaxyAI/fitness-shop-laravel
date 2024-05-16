@@ -20,7 +20,7 @@ Route::group([
             Route::get('catalog-load-more/{category}', 'loadMore')->name('catalog-load-more');
         });
 
-        Route::get('product/{product}', ProductController::class)->name('product');
+        Route::get('product/{slug}', ProductController::class)->name('product');
     });
 });
 
