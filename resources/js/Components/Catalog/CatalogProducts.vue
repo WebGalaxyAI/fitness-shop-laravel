@@ -1,5 +1,5 @@
 <script setup>
-import ProductCard from "@/Components/ProductCard.vue";
+import ProductCard from "@/Components/Catalog/ProductCard.vue";
 import Pagination from "@/Components/Pagination.vue";
 import {ref} from "vue";
 

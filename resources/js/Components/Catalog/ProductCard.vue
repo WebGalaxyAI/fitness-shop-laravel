@@ -16,17 +16,16 @@ const props = defineProps({
 )
 const store = useStore();
 
-// const favoriteIds = ref(page.props.favoriteIds);
+const favoriteIds = ref(page.props.favoriteIds);
 const isFavorite = computed(() => {
-    return false;
-    // return Object.values(favoriteIds.value).some((favId) => favId === props.product.id);
+    return Object.values(favoriteIds.value).some((favId) => favId === props.product.id);
 });
 
 const toggleFavorite = async () => {
     try {
-        // const response = await axios.post(`/favorites/${props.product.id}`);
-        // favoriteIds.value = response.data.favoriteIds;
-        // store.commit('setFavoriteIds', Object.values(response.data.favoriteIds));
+        const response = await axios.post(`/favorites/${props.product.id}`);
+        favoriteIds.value = response.data.favoriteIds;
+        store.commit('setFavoriteIds', Object.values(response.data.favoriteIds));
     } catch (error) {
         console.error(error);
     }

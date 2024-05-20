@@ -3,15 +3,21 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import NavLink from "@/Components/NavLink.vue";
+import IconCounter from "@/Components/IconCounter.vue";
+import CatalogMenuModal from "@/Components/Catalog/CatalogMenuModal.vue";
+import LanguageSelector from "@/Components/LanguageSelector.vue";
 import Link from "@/Components/Link.vue";
 import {usePage} from "@inertiajs/vue3";
-import LanguageSelector from "@/Components/LanguageSelector.vue";
-import CatalogMenuModal from "@/Components/Catalog/CatalogMenuModal.vue";
+import { useStore } from 'vuex';
 
+const store = useStore();
 const page = usePage()
 const showingNavigationDropdown = ref(false);
+
+store.commit('setFavoriteIds', Object.values(page.props.favoriteIds));
+const favoriteIds = computed(() => store.state.favoriteIds);
 
 
 function isActive(path) {
@@ -201,7 +207,12 @@ function logout() {
                 </div>
 
                 <div class="flex items-center gap-6">
-
+                    <IconCounter :href="route('favorites')" :count="favoriteIds.length">
+                        <img src="/img/front/heart.svg" alt="heart">
+                    </IconCounter>
+                    <IconCounter :count="0">
+                        <img src="/img/front/cart.svg" alt="cart">
+                    </IconCounter>
                 </div>
                 <slot name="header"/>
             </div>

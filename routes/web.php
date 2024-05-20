@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\FavoriteProductController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -21,6 +22,11 @@ Route::group([
         });
 
         Route::get('product/{slug}', ProductController::class)->name('product');
+
+        Route::controller(FavoriteProductController::class)->group(function () {
+            Route::get('/favorites', 'index')->name('favorites');
+            Route::post('/favorites/{product}', 'toggle')->name('favorites.toggle');
+        });
     });
 });
 
