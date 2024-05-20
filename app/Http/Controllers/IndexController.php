@@ -16,7 +16,6 @@ class IndexController extends Controller
     {
         $sliders = Slider::where('type', 'main')->get();
         $brands = Brand::query()->orderBy('order')->take(15)->get();
-
         return Inertia::render('Home', [
             'title' => __('Home'),
             'sliders' => SliderResource::collection($sliders),

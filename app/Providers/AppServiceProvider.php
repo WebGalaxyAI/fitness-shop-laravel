@@ -4,12 +4,15 @@ namespace App\Providers;
 
 use App\Repositories\ElasticsearhProductRepository;
 use App\Repositories\ProductRepository;
+use Carbon\CarbonInterval;
 use Elastic\Elasticsearch\Client;
 use Elastic\Elasticsearch\ClientBuilder;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Http\Kernel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,28 @@ class AppServiceProvider extends ServiceProvider
 
         $this->bindSearchClient();
         $this->classesBinding();
+        if (app()->isProduction()) {
+            $this->logLongRequests();
+        }
+    }
+
+    public function logLongRequests()
+    {
+        DB::listen(function ($query) {
+            if ($query->time > 100) {
+                logger()
+                    ->channel('telegram')
+                    ->debug("🛠 Need fix SQL 👨🏾‍🔧🔧 \n Query longer then 1ms:  . $query->sql, $query->bindings");
+            }
+        });
+
+        app(Kernel::class)->whenRequestLifecycleIsLongerThan(
+            CarbonInterval::seconds(4),
+            function () {
+                logger()->channel('telegram')
+                    ->debug("⚙️ Need fix Request 👨🏾‍🔧🔧 \n Long term query: " . request()->url());
+            }
+        );
     }
 
     private function classesBinding()
