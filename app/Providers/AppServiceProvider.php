@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Repositories\ElasticsearhProductRepository;
 use App\Repositories\ProductRepository;
 use Carbon\CarbonInterval;
@@ -36,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
             return Limit::perMinute(1000);
         });
 
-        Gate::before(function ($user, $ability) {
+        Gate::before(function (User $user, string $ability) {
             return $user->hasRole('super admin') ? true : null;
         });
 
