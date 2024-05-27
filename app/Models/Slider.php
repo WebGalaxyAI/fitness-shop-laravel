@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\SliderType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
@@ -22,6 +23,10 @@ class Slider extends Model implements Sortable
         'order',
         'type',
         'url',
+    ];
+
+    protected $casts = [
+        'type' => SliderType::class,
     ];
 
     public function getImgUrl(): string

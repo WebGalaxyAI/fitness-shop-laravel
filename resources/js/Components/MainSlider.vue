@@ -34,7 +34,7 @@ onMounted(() => {
     goToSlide(0);
     setInterval(() => {
         nextSlide();
-    }, 3000);
+    }, 5000);
 })
 
 function goToSlide(slide) {
