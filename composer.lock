@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21b63a8903ff702c2185ae639709cb1f",
+    "content-hash": "6dda6101bf06e9882b3ac4fe499a4751",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4063,6 +4063,65 @@
                 }
             ],
             "time": "2024-04-12T21:02:21+00:00"
+        },
+        {
+            "name": "mvenghaus/filament-plugin-translatable-inline",
+            "version": "3.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mvenghaus/filament-plugin-translatable-inline.git",
+                "reference": "e69afd5812aed77a28f86b25d775660057639094"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mvenghaus/filament-plugin-translatable-inline/zipball/e69afd5812aed77a28f86b25d775660057639094",
+                "reference": "e69afd5812aed77a28f86b25d775660057639094",
+                "shasum": ""
+            },
+            "require": {
+                "filament/forms": "^3.0",
+                "filament/spatie-laravel-translatable-plugin": "^3.0",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mvenghaus\\FilamentPluginTranslatableInline\\FilamentPluginTranslatableInlineServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mvenghaus\\FilamentPluginTranslatableInline\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcus Venghaus",
+                    "email": "marcus.venghaus@inklammern.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An alternative to https://github.com/filamentphp/spatie-laravel-translatable-plugin. The difference is that all translations occur directly under each field.",
+            "homepage": "https://github.com/mvenghaus/filament-plugin-translatable-inline",
+            "keywords": [
+                "filament",
+                "inline",
+                "laravel",
+                "mvenghaus",
+                "spatie",
+                "translatable"
+            ],
+            "support": {
+                "issues": "https://github.com/mvenghaus/filament-plugin-translatable-inline",
+                "source": "https://github.com/mvenghaus/filament-plugin-translatable-inline"
+            },
+            "time": "2024-03-16T06:22:25+00:00"
         },
         {
             "name": "nesbot/carbon",
