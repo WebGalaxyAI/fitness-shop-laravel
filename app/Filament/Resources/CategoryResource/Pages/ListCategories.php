@@ -20,4 +20,11 @@ class ListCategories extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            CategoryResource\Widgets\CategoryTree::class,
+        ];
+    }
 }
