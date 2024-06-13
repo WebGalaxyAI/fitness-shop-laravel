@@ -73,6 +73,11 @@ class Product extends Model implements HasMedia
         return $this->getFirstMedia()?->getUrl() ?? url('img/no-img-available.png');
     }
 
+    public function getFirstImgUrlAttribute(): string
+    {
+        return $this->getFirstMedia()?->getUrl() ?? url('img/no-img-available.png');
+    }
+
     protected function price(): Attribute
     {
         return Attribute::make(

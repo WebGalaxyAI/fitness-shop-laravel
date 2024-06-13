@@ -25,10 +25,13 @@ class ProductPageRepository
         $breadcrumbs = app(Breadcrumbs::class);
 
         $category = $product->categories->first();
-        $category?->parents(0)->map(function (Category $category) use ($breadcrumbs) {
+        if ($category) {
+            $category->parents(0)->map(function (Category $category) use ($breadcrumbs) {
+                $breadcrumbs->add($category->name, $category->getCatalogUrl());
+            });
             $breadcrumbs->add($category->name, $category->getCatalogUrl());
-        });
-        $breadcrumbs->add($category->name, $category->getCatalogUrl());
+        }
+
         $breadcrumbs->add($product->name);
         return $breadcrumbs;
     }
