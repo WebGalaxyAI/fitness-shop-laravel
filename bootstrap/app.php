@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Responses\Errors\Render404Response;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Pipeline;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -30,4 +34,19 @@ return Application::configure(basePath: dirname(__DIR__))
                     ->channel('telegram')
                     ->error("🚨🆘😟 ❗❗❗{$className} \n. {$e->getMessage()}\n. File: {$e->getFile()}\n. Line: {$e->getLine()}");
             });
+        $exceptions->render(function (NotFoundHttpException $e, Request $request) {
+            if ($request->route()) {
+                return new Render404Response();
+            }
+
+            return (new Pipeline(app()))
+                ->send($request)
+                ->through([
+                    Illuminate\Cookie\Middleware\EncryptCookies::class,
+                    App\Http\Middleware\HandleInertiaRequests::class,
+                ])
+                ->then(function ($request) {
+                    return (new Render404Response())->toResponse($request);
+                });
+        });
     })->create();

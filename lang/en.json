@@ -1,4 +1,5 @@
 {
+    "Go back to the main page": "Go back to the main page",
     "Buy": "Buy",
     "Price": "Price",
     "Show more": "Show more",
@@ -30,5 +31,6 @@
     "Name": "Name",
     "Favorite products": "Favorite products",
     "Favorite": "Favorite",
-    "Main page": "Main page"
+    "Main page": "Main page",
+    "Sorry, but we didn't find this page": "Sorry, but we didn't find this page"
 }

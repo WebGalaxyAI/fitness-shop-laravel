@@ -1,4 +1,5 @@
 {
+    "Go back to the main page": "Повернутися на головну",
     "In basket": "В кошик",
     "Buy": "Купити",
     "Price": "Ціна",
@@ -31,5 +32,6 @@
     "Name": "Назва",
     "Favorite products": "Улюблені продукти",
     "Favorite": "Улюблені",
-    "Main page": "Головна сторінка"
+    "Main page": "Головна сторінка",
+    "Sorry, but we didn't find this page": "Вибачте, але ми не знайшли цю сторінку"
 }

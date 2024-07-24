@@ -42,10 +42,6 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
                 'canAccessAdminPanel' => $request->user()?->canAccessAdminPanel(),
             ],
-            'flash' => [
-                'message' => $request->session()->get('message'),
-                'errors' => $request->session()->get('errors'),
-            ],
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'locale' => function () {

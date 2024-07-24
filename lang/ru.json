@@ -1,4 +1,5 @@
 {
+    "Go back to the main page": "Вернуться на главную",
     "Buy": "Купить",
     "Price": "Цена",
     "Show more": "Показать еще",
@@ -30,5 +31,6 @@
     "Name": "Название",
     "Favorite products": "Любимые продукты",
     "Favorite": "Любимые",
-    "Main page": "Главная страница"
+    "Main page": "Главная страница",
+    "Sorry, but we didn't find this page": "Извините, но мы не нашли эту страницу"
 }
