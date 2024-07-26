@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Responses\Errors\Render404Response;
+use App\Http\Responses\Errors\Render500Response;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -49,4 +50,11 @@ return Application::configure(basePath: dirname(__DIR__))
                     return (new Render404Response())->toResponse($request);
                 });
         });
+
+        if (app()->environment() != 'local' && request()->isMethod('GET')) {
+            $exceptions->render(function (\ErrorException|\RuntimeException $exception, $request) {
+                return new Render500Response();
+            });
+        }
+
     })->create();

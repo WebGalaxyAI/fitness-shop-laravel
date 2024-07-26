@@ -210,7 +210,7 @@ function logout() {
                     <IconCounter :href="route('favorites')" :count="favoriteIds.length">
                         <img src="/img/front/heart.svg" alt="heart">
                     </IconCounter>
-                    <IconCounter :count="0">
+                    <IconCounter :count="0" href="#">
                         <img src="/img/front/cart.svg" alt="cart">
                     </IconCounter>
                 </div>

@@ -1,42 +1,34 @@
 <script setup>
-import {Head} from '@inertiajs/vue3'
+import { Head } from '@inertiajs/vue3'
 import MainLayout from "@/Layouts/MainLayout.vue";
 import RedButton from "@/Components/RedButton.vue";
 
 const props = defineProps({
-        title: String,
-        text: String,
-        error: Number,
-    }
-)
-
+    title: String,
+    text: String,
+    error: Number,
+    imagePath: String,
+});
 </script>
 
 <template>
     <Head :title="title"/>
     <MainLayout>
-        <div class="bg-404 h-screen pt-32">
-            <h1 class="main-text">
+        <div class="h-screen pt-32 relative">
+            <img :src="imagePath" alt="Background" class="absolute inset-0 w-full h-full object-cover z-0"/>
+            <div class="main-text relative z-10">
                 <div>
                     {{ text }}
                 </div>
-                <div>
+                <div :class="error === 500 ? 'mt-12' : 'mt-1'">
                     <RedButton :text="__('Go back to the main page')" :href="route('home')"/>
                 </div>
-            </h1>
+            </div>
         </div>
     </MainLayout>
 </template>
 
-
 <style scoped>
-.bg-404 {
-    background-image: url('/img/errors/bg-404.png');
-    background-size: cover;
-    background-position: center;
-
-}
-
 .main-text {
     display: flex;
     flex-direction: column;

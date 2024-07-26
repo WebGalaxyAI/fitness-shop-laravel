@@ -37,18 +37,20 @@ const page = usePage()
             </span>
         </template>
         <template #content>
-            <DropdownLink v-for="(langLink, index) in $page.props.languageSelector"
-                          rel="alternate"
-                          :key="`lang${index}`"
-                          :inertia="false"
-                          :hreflang="langLink.hreflang"
-                          :href="langLink.href">
-                <div class="flex items-center gap-1">
-                    <img class="h-4" :src="'/img/front/' + langLink.hreflang + '-flag-icon.svg'"
-                         :alt="langLink.title">
-                    <span>{{ langLink.title }}</span>
-                </div>
-            </DropdownLink>
+            <template v-for="(langLink, index) in $page.props.languageSelector">
+                <DropdownLink v-if="langLink.hreflang !== $page.props.locale"
+                              rel="alternate"
+                              :key="`lang${index}`"
+                              :inertia="false"
+                              :hreflang="langLink.hreflang"
+                              :href="langLink.href">
+                    <div class="flex items-center gap-1">
+                        <img class="h-4" :src="'/img/front/' + langLink.hreflang + '-flag-icon.svg'"
+                             :alt="langLink.title">
+                        <span>{{ langLink.title }}</span>
+                    </div>
+                </DropdownLink>
+            </template>
         </template>
     </Dropdown>
 </template>
