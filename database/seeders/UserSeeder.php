@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\UserAddress;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -109,8 +110,17 @@ class UserSeeder extends Seeder
             $user->assignRole($person['role']);
         }
 
-        User::factory(100)->create()->each(function ($user) {
-            UserAddress::factory(rand(1, 2))->create(['user_id' => $user->id]);
-        });
+        // Пройдемося по останніх 5 місяцях
+        for ($i = 0; $i <= 5; $i++) {
+            $startOfMonth = Carbon::now()->subMonths($i)->startOfMonth();
+
+            $userCount = rand(5, 30);
+
+            // Використовуємо фабрику для створення користувачів
+            User::factory()->count($userCount)->create([
+                'created_at' => $startOfMonth->toDateTimeString(),
+                'updated_at' => $startOfMonth->toDateTimeString(),
+            ]);
+        }
     }
 }
