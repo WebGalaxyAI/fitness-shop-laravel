@@ -7,13 +7,13 @@
     "require": {
         "php": "^8.2",
         "codewithdennis/filament-select-tree": "^3.1",
-        "efureev/laravel-trees": "^4.0",
+        "efureev/laravel-trees": "^5.0",
         "elasticsearch/elasticsearch": "^8.13",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
-        "inertiajs/inertia-laravel": "^1.0",
-        "laravel/framework": "^11.0",
+        "inertiajs/inertia-laravel": "^2.0",
+        "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "mcamara/laravel-localization": "^2.0",
@@ -33,7 +33,7 @@
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^10.5",
+        "phpunit/phpunit": "^11.0",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
