@@ -45,7 +45,7 @@ class StatsOverviewWidget extends BaseWidget
         $previousMonthItemsCount = $stats[now()->subMonth()->format('Y-m')];
 
         if ($previousMonthItemsCount > 0) {
-            $percentageChange = (($newItemsCount - $previousMonthItemsCount) / $previousMonthItemsCount) * 100;
+            $percentageChange = ceil((($newItemsCount - $previousMonthItemsCount) / $previousMonthItemsCount) * 100);
         } else if ($previousMonthItemsCount === 0 && $newItemsCount > 0) {
             $percentageChange = 100;
         } else {

@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     {
         $employees = [
             [
-                'name' => 'Олександр Усик',
+                'name' => 'Oleksandr Usyk',
                 'email' => 'usik@gmail.com',
                 'country_iso' => 'UA',
                 'city' => 'Kyiv',

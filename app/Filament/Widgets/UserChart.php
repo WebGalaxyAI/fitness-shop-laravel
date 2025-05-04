@@ -26,7 +26,7 @@ class UserChart extends ChartWidget
 
         $itemsPerLastYear = DB::table('users')
             ->select(DB::raw('COUNT(*) as count'), DB::raw('YEAR(created_at) as year'), DB::raw('MONTH(created_at) as month'))
-            ->where('created_at', '>=', Carbon::now()->subMonths(6)->startOfMonth())
+            ->where('created_at', '>=', Carbon::now()->subMonths(12)->startOfMonth())
             ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
             ->orderBy('year')
             ->orderBy('month')

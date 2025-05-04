@@ -6,6 +6,7 @@ use App\Parsers\CatalogProductParser;
 use App\Parsers\CategoryParser;
 use App\Parsers\ProductParser;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Casts\Json;
 
 class Parser extends Command
 {

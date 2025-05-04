@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryManager
 {
+    private string $imgDirectory = 'categories';
+
     public function saveCategoryImg(string $url, Category $category): bool
     {
         $response = Http::get($url);

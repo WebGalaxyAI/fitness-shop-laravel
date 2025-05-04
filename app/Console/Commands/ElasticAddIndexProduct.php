@@ -16,7 +16,7 @@ class ElasticAddIndexProduct extends Command
     {
         $this->info('Start adding Elastic index to products. This might take a while...');
 
-        $elastic->deleteIndex();
+//        $elastic->deleteIndex();
         $elastic->createIndexWithMapping();
 
         foreach (Product::cursor() as $product) {
