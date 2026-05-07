@@ -65,7 +65,7 @@ const props = defineProps({
                 <div v-if="product.sale_price" class="sale-price text-base">{{ product.sale_price }} грн.</div>
                 <div v-if="product.price" class="price text-sm" :class="{ 'is-old': product.sale_price }">{{ product.price }} грн.</div>
             </div>
-            <AddProductToCartButton :product="product"/>
+            <AddProductToCartButton :product="product" class="w-full"/>
         </div>
 
     </div>

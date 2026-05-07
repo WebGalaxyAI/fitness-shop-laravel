@@ -17,7 +17,9 @@ const page = usePage()
 const showingNavigationDropdown = ref(false);
 
 store.commit('setFavoriteIds', Object.values(page.props.favoriteIds));
+store.commit('setCartItems', page.props.cartItems ?? []);
 const favoriteIds = computed(() => store.state.favoriteIds);
+const cartCount = computed(() => store.getters.cartCount);
 
 
 function isActive(path) {
@@ -210,7 +212,7 @@ function logout() {
                     <IconCounter :href="route('favorites')" :count="favoriteIds.length">
                         <img src="/img/front/heart.svg" alt="heart">
                     </IconCounter>
-                    <IconCounter :count="0" href="#">
+                    <IconCounter :count="cartCount" :href="route('cart')">
                         <img src="/img/front/cart.svg" alt="cart">
                     </IconCounter>
                 </div>

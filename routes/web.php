@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\FavoriteProductController;
 use App\Http\Controllers\IndexController;
@@ -26,6 +27,13 @@ Route::group([
         Route::controller(FavoriteProductController::class)->group(function () {
             Route::get('/favorites', 'index')->name('favorites');
             Route::post('/favorites/{product}', 'toggle')->name('favorites.toggle');
+        });
+
+        Route::controller(CartController::class)->group(function () {
+            Route::get('/cart', 'index')->name('cart');
+            Route::post('/cart/products', 'store')->name('cart.products.store');
+            Route::patch('/cart/products/{product}', 'update')->name('cart.products.update');
+            Route::delete('/cart/products/{product}', 'destroy')->name('cart.products.destroy');
         });
     });
 });

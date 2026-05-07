@@ -40,10 +40,10 @@ const goToUrl = () => {
     <div class="filter-item text-sm">
         <div class="property-name mb-2">{{ title }}</div>
         <div>
-            <div class="flex items-center mb-6 gap-2">
+            <div class="flex items-center flex-wrap mb-6 gap-2">
                 <template v-for="(val, index) in value" :key="'filter'+index">
                     <input
-                        class="range-input text-sm w-20 p-1 rounded border-gray-300"
+                        class="range-input text-sm w-0 flex-1 min-w-[64px] max-w-[88px] p-1 rounded border-gray-300"
                         type="number"
                         :value="val"
                         :min="minValue"
@@ -51,10 +51,10 @@ const goToUrl = () => {
                         @input="updateValue($event.target.value, index)"
                     />
                     <template v-if="index === 0 && value.length > 1">
-                        <div class="w-4 h-[0.1em] bg-gray-500"></div>
+                        <div class="w-3 h-[0.1em] bg-gray-500 shrink-0"></div>
                     </template>
                 </template>
-                <DefaultButton class="h-[29px]" text="ОК" :text-x-s="true" @click="goToUrl"/>
+                <DefaultButton class="h-[29px] shrink-0" text="ОК" :text-x-s="true" @click="goToUrl"/>
             </div>
             <Slider v-model="value"
                     tooltipPosition="bottom"

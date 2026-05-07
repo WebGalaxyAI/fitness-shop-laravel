@@ -30,11 +30,10 @@ const filteredFavoriteProducts = computed(() => {
         <ContentWrapper class="mt-6">
             <Breadcrumbs :breadcrumbs="breadcrumbs" class="mb-6"/>
             <MainTitle :title="title"/>
-            <div class="product-cards grid grid-cols-4 gap-6 mr-4 mb-6">
+            <div class="product-cards grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
                 <ProductCard v-for="(product, index) in filteredFavoriteProducts"
                              :key="'favorite-product-' + index"
                              :product="product"
-                             :buy-button="false"
                 />
             </div>
         </ContentWrapper>

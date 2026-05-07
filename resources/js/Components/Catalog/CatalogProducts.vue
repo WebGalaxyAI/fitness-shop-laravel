@@ -33,7 +33,7 @@ const loadProducts = async (url, totalPages) => {
 
 <template>
     <div>
-        <div class="product-cards grid grid-cols-4 gap-6 mr-4 mb-6">
+        <div class="product-cards grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
             <ProductCard v-for="(product, index) in products"
                          :key="'catalog-product-' + index"
                          :product="product"

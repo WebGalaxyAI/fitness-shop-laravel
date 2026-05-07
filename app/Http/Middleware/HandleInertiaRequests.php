@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Resources\CategoryResource;
+use App\Repositories\CartRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\FavoriteProductsRepository;
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ class HandleInertiaRequests extends Middleware
     {
         $catRepository = app(CategoryRepository::class);
         $favoriteRepository = app(FavoriteProductsRepository::class);
+        $cartRepository = app(CartRepository::class);
         return [
             ...parent::share($request),
             'auth' => [
@@ -53,6 +55,8 @@ class HandleInertiaRequests extends Middleware
                 ->load(app()->getLocale(), '*', '*'),
             'languageSelector' => $this->generateSwitchLinks(),
             'favoriteIds' => $favoriteRepository->getIds($request),
+            'cartItems' => $cartRepository->getItems($request),
+            'cartCount' => $cartRepository->getCount($request),
         ];
     }
 

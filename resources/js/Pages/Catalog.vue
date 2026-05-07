@@ -31,13 +31,15 @@ defineProps({
         <ContentWrapper class="mt-6">
             <Breadcrumbs :breadcrumbs="breadcrumbs" class="mb-6"/>
             <MainTitle :title="title"/>
-            <div v-if="categorySiblings.length" class="grid grid-cols-[2fr,1fr] mb-6">
+            <div v-if="categorySiblings.length" class="grid grid-cols-1 sm:grid-cols-[2fr,1fr] gap-3 sm:gap-4 mb-6">
                 <CategorySiblings :categorySiblings="categorySiblings"/>
                 <SortingFields/>
             </div>
-            <div class="grid grid-cols-[6fr,1fr] mb-6">
+            <div class="grid grid-cols-1 lg:grid-cols-[6fr,1fr] gap-6 mb-6">
                 <CatalogProducts :products="products" :per-page="perPage" :total="total" :current-page="currentPage"/>
-                <CatalogFilters :filters="filters" :prices="prices"/>
+                <aside class="hidden lg:block">
+                    <CatalogFilters :filters="filters" :prices="prices"/>
+                </aside>
             </div>
         </ContentWrapper>
     </MainLayout>

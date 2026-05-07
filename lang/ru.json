@@ -32,6 +32,15 @@
     "Name": "Название",
     "Favorite products": "Любимые продукты",
     "Favorite": "Любимые",
+    "Cart": "Корзина",
+    "My cart": "Моя корзина",
+    "Cart is empty": "Корзина пуста",
+    "Quantity": "Количество",
+    "Items": "Товаров",
+    "Total": "Итого",
+    "Delete": "Удалить",
+    "Increase": "Увеличить",
+    "Decrease": "Уменьшить",
     "Main page": "Главная страница",
     "Sorry, but we didn't find this page": "Извините, но мы не нашли эту страницу"
 }

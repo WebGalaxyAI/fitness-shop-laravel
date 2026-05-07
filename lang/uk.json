@@ -33,6 +33,15 @@
     "Name": "Назва",
     "Favorite products": "Улюблені продукти",
     "Favorite": "Улюблені",
+    "Cart": "Кошик",
+    "My cart": "Моя корзина",
+    "Cart is empty": "Кошик порожній",
+    "Quantity": "Кількість",
+    "Items": "Товарів",
+    "Total": "Разом",
+    "Delete": "Видалити",
+    "Increase": "Збільшити",
+    "Decrease": "Зменшити",
     "Main page": "Головна сторінка",
     "Sorry, but we didn't find this page": "Вибачте, але ми не знайшли цю сторінку"
 }

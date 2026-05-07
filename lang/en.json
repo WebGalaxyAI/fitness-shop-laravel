@@ -32,6 +32,15 @@
     "Name": "Name",
     "Favorite products": "Favorite products",
     "Favorite": "Favorite",
+    "Cart": "Cart",
+    "My cart": "My cart",
+    "Cart is empty": "Cart is empty",
+    "Quantity": "Quantity",
+    "Items": "Items",
+    "Total": "Total",
+    "Delete": "Delete",
+    "Increase": "Increase",
+    "Decrease": "Decrease",
     "Main page": "Main page",
     "Sorry, but we didn't find this page": "Sorry, but we didn't find this page"
 }

@@ -4,16 +4,12 @@ import {usePage} from "@inertiajs/vue3";
 import {computed, ref} from "vue";
 import {useStore} from 'vuex';
 import Link from "@/Components/Link.vue";
+import AddProductToCartButton from "@/Components/Product/AddProductToCartButton.vue";
 
 const page = usePage()
 const props = defineProps({
-        product: Object,
-        buyButton: {
-            type: Boolean,
-            default: true,
-        }
-    }
-)
+    product: Object,
+});
 const store = useStore();
 
 const favoriteIds = ref(page.props.favoriteIds);
@@ -34,8 +30,8 @@ const toggleFavorite = async () => {
 
 <template>
     <div
-        class="relative product-card flex flex-col bg-white rounded-md transition duration-300 ease-in-out hover:scale-105 p-4">
-        <div class="product-image w-full min-h-[220px] mp-6">
+        class="relative product-card flex flex-col bg-white rounded-md transition duration-300 ease-in-out hover:shadow-md p-3 sm:p-4">
+        <div class="product-image w-full min-h-[160px] sm:min-h-[220px]">
             <div class="hurt absolute right-4 cursor-pointer" @click="toggleFavorite()">
                 <svg v-if="isFavorite" xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20"
                      fill="none">
@@ -50,8 +46,8 @@ const toggleFavorite = async () => {
                 </svg>
             </div>
             <Link :href="route('product', product.slug)">
-                <div class="flex items-center h-full">
-                    <img :src="product.image" class="max-h-[200px]" alt="Зображення продукту">
+                <div class="flex items-center justify-center h-full">
+                    <img :src="product.image" class="max-h-[140px] sm:max-h-[200px]" alt="Зображення продукту">
                 </div>
             </Link>
         </div>
@@ -114,27 +110,12 @@ const toggleFavorite = async () => {
                 </div>
             </div>
 
-            <div class="grid grid-cols-2">
-                <div class="prices">
+            <div class="flex items-end justify-between gap-2 sm:block">
+                <div class="prices flex-1 sm:mb-3">
                     <div v-if="product.sale_price" class="sale-price text-base">{{ product.sale_price }} грн.</div>
                     <div v-if="product.price" class="price text-sm" :class="{ 'is-old': product.sale_price }">{{ product.price }} грн.</div>
                 </div>
-                <div class="flex items-center cursor-pointer">
-                    <Link :href="route('product', product.slug)">
-                        <div class="buy flex items-center gap-2 text-white rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23"
-                                 fill="none">
-                                <path
-                                    d="M1.4 7.13816H18.4571V19.0001C18.4571 20.7121 17.0692 22.1001 15.3571 22.1001H4.5C2.78792 22.1001 1.4 20.7121 1.4 19.0001V7.13816Z"
-                                    stroke="white" stroke-width="1.8"/>
-                                <path
-                                    d="M5.73624 11.4761V4.99988C5.73624 2.79074 7.5271 0.999884 9.73624 0.999884H10.1172C12.3263 0.999884 14.1172 2.79074 14.1172 4.99988V11.4761"
-                                    stroke="white" stroke-width="1.8"/>
-                            </svg>
-                            {{ buyButton ? __('Buy') : __('In basket') }}
-                        </div>
-                    </Link>
-                </div>
+                <AddProductToCartButton :product="product" class="sm:w-full"/>
             </div>
 
         </div>
@@ -174,17 +155,6 @@ const toggleFavorite = async () => {
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 19.6px */
-}
-
-.buy {
-    background: #F53B49;
-
-    display: flex;
-    padding: 1em 0.7em;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    flex: 1 0 0;
 }
 
 .sale-price {
