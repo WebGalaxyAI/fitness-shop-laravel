@@ -261,7 +261,8 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($data as $arr) {
-            $category = Category::create($arr);
+            $category = Category::make($arr);
+            $category->saveAsRoot();
             if (isset($arr['children'])) {
                 $this->createNonRootNodes($arr['children'], $category);
             }

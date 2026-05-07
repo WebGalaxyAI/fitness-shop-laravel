@@ -1,6 +1,6 @@
 <?php
 
-use Fureev\Trees;
+use Fureev\Trees\Database\Migrate as TreesMigrate;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +15,7 @@ return new class extends Migration {
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            Trees\Migrate::columns($table, (new \App\Models\Category())->getTreeConfig());
+            TreesMigrate::columnsFromModel($table, \App\Models\Category::class);
             $table->jsonb('name');
             $table->string('image', 100)->nullable();
             $table->string('slug', 70);

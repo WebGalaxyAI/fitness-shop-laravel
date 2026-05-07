@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Fureev\Trees\Config\Builder;
 use Fureev\Trees\UseTree;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -63,5 +64,10 @@ class Category extends Model implements Sortable
         return route('catalog', [
             'category' => $this->slug,
         ]);
+    }
+
+    protected static function buildTree(): Builder
+    {
+        return Builder::defaultMulti();
     }
 }
