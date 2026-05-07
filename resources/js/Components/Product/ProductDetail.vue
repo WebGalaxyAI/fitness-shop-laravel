@@ -63,7 +63,7 @@ const props = defineProps({
         <div class="grid grid-cols-2">
             <div class="prices">
                 <div v-if="product.sale_price" class="sale-price text-base">{{ product.sale_price }} грн.</div>
-                <div v-if="product.price" class="price text-sm">{{ product.price }} грн.</div>
+                <div v-if="product.price" class="price text-sm" :class="{ 'is-old': product.sale_price }">{{ product.price }} грн.</div>
             </div>
             <AddProductToCartButton :product="product"/>
         </div>
@@ -121,6 +121,9 @@ const props = defineProps({
     font-style: normal;
     font-weight: 400;
     line-height: 135.938%; /* 20.391px */
-    text-decoration: line-through;
+
+    &.is-old {
+        text-decoration: line-through;
+    }
 }
 </style>
